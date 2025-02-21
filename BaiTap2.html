@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rotated-box {  
+            height: 150px;
+            background: linear-gradient(to right, red, white);  
+            transform: skewX(60deg) rotate(30deg); 
+            position: absolute;
+            top: 80px;
+            left: 150px;
+            transform-origin: left bottom;
+        } 
+    </style>
+</head>
+<body style="margin: 0;">
+    <div style="height: 100vh;width:100%;background-color:black;position:relative">
+        <div id="obj" class="rotated-box">
+
+        </div>
+    </div>
+</body>
+<script>
+    let size={
+        width:10,
+        indexBg:0
+    }; 
+    const backgrounds=["red","green","blue","yellow"]
+    let circle=document.getElementById("obj");
+    setInterval(()=>{
+        if(size.width<700){
+            size.width+=8;
+        }else{
+            size.width=10;  
+            size.indexBg= size.indexBg+1<backgrounds.length?size.indexBg+1:0 
+            circle.style.background=`linear-gradient(to right,${backgrounds[size.indexBg]}, white)` 
+        }
+        circle.style.width=`${size.width}px`  
+        
+    },20)
+</script>
+</html>
